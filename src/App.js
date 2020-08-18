@@ -1,25 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Fragment, useState } from "react";
+
+import Formulario from "./componets/Formulario";
+import Resultado from "./componets/Resultado";
 
 function App() {
+  const [resultado, guardarResultado] = useState({});
+
+  const [ocultar, setOcultar] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Fragment>
+      <h1 className="teal-text center-align">Simulador CallCenter</h1>
+      <div className="grid-container">
+        <div>
+          <Formulario
+            guardarResultado={guardarResultado}
+            setOcultar={setOcultar}
+          />
+        </div>
+        <div>
+          <Resultado resultado={resultado} ocultar={ocultar} />
+        </div>
+      </div>
+    </Fragment>
   );
 }
 
